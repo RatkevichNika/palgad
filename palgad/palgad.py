@@ -145,9 +145,25 @@ def sort_nimi_jargi(i,p):
         for palk in p:
             if zp<palk:
                 print(palk,'-',i[p.index(palk)])
+def tulumaks(i,p):
+    tulumals=0
+    x=0
+    for e in range(len(p)):
+        if p[e]<=1200:
+            x=int(p[e])
+            tulumaks=(x-((x-500)*0.2))
+            print(tulumaks,'-',i[e])
+        elif p[e]>1200 and p[e]<2099:
+            x=int(p[e])
+            tulumaks=x-(500-0.55556*(x-1200))*0.2
+            print(tulumaks,'-',i[e])
+        elif p[e]>2100:
+            x=int(p[e])
+            tulumaks=x-(x*0.2)
+            print(tulumaks,'-',i[e])
 
 while 1:
-    valik=input('a - andmete sisestamine\ne - andmed ekranile\nk - kustutamine inimese palk\nmax - suurim palk\ns - sorteeremine\nd - võrdsed palgad\nl - inimese otsimine\nw- sisesta palk\nq-top3\nh-sort_nimi_jargi\nTeie valik: ')
+    valik=input('a - andmete sisestamine\ne - andmed ekranile\nk - kustutamine inimese palk\nmax - suurim palk\ns - sorteeremine\nd - võrdsed palgad\nl - inimese otsimine\nw- sisesta palk\nq-top3\nh-sort_nimi_jargi\no-tulumaks\nTeie valik: ')
     if valik.lower()=='a':
         inimesed,palgad=sisesta_andmed(inimesed,palgad)
     elif valik.lower()=='e':
@@ -168,6 +184,8 @@ while 1:
         top3(inimesed,palgad)
     elif valik.lower()=='h':
         sort_nimi_jargi(inimesed,palgad,int(input('1 - A-Z\n2 - Z-A\nTeie valik:')))
+    elif valik.lower()=='h':
+        tulumaks(inimesed,palgad)
     else:
         break
 inimesed,palgad=sisesta_andmed(inimesed,palgad)
